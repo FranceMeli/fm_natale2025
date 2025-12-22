@@ -1,193 +1,52 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎁 Regalo di Natale</title>
-
-<style>
-/* RESET */
-* {
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-}
-
-/* SFONDO */
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #0b1d3a, #1b3b6f);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
-
-/* CONTENITORE */
-.container {
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-/* TITOLO */
-h1 {
-  margin-top: 40px;
-  animation: fadeIn 2s;
-}
-
-/* CARD */
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 16px;
-  margin-top: 30px;
-  animation: slideUp 1s;
-}
-
-/* INPUT */
-input {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  width: 80%;
-  margin-top: 10px;
-}
-
-/* BOTTONE */
-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #e63946;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #ff4d5a;
-}
-
-/* NASCOSTO */
-.hidden {
-  display: none;
-}
-
-/* ANIMAZIONI */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* NEVE */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: white;
-  font-size: 1em;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎄 Natale 2025</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
-  <h1>🎄 Buon Natale!</h1>
+  <h1>🎁 Natale 2025</h1>
 
-  <!-- STEP 1 -->
-  <div class="card" id="step1">
-    <h2>🎁 Indovinello 1</h2>
-    <p>Cosa più cresce e meno vedi?</p>
-    <input id="answer1" placeholder="Scrivi la risposta">
-    <br>
-    <button onclick="check1()">Conferma</button>
-  </div>
-
-  <!-- STEP 2 -->
-  <div class="card hidden" id="step2">
-    <h2>🎁 Indovinello 2</h2>
-    <p>Non ha bocca ma parla, non ha orecchie ma ascolta. Cos’è?</p>
-    <input id="answer2" placeholder="Scrivi la risposta">
-    <br>
-    <button onclick="check2()">Conferma</button>
-  </div>
-
-  <!-- STEP 3 -->
-  <div class="card hidden" id="step3">
-    <h2>🎁 Indovinello 3</h2>
-    <p>Più ne togli, più diventa grande. Cos’è?</p>
-    <input id="answer3" placeholder="Scrivi la risposta">
-    <br>
-    <button onclick="check3()">Scopri il regalo 🎉</button>
-  </div>
-
-  <!-- FINALE -->
-  <div class="card hidden" id="finale">
-    <h2>🎉 Sorpresa!</h2>
+  <div class="description">
     <p>
-      Questo è solo l’inizio…<br><br>
-      Il vero regalo ti aspetta 🎁❤️<br><br>
-      <strong>Buon Natale!</strong>
+      Il gioco è composto da 7 domande, ogni domanda può sbloccare una carta evento o una carta azione.<br><br>
+      Le risposte sono composte esclusivamente da una parola o numero e devo essere scritte solo in minuscolo. <br><br>
+      Dopo aver dato la risposta, che sia giusta o sbagliata, attendi 2 secondi per la successiva.</br>
+      Al termine delle domande avrai composto il tuo deck di carte e riceverai altre informazioni.
     </p>
+
+    <!-- BOTTONE INIZIA -->
+    <button id="startBtn" onclick="startGame()">🎄 Inizia</button>
+  </div>
+
+  <!-- BOX DOMANDE (NASCOSTO ALL'INIZIO) -->
+  <div class="card-box hidden" id="gameBox">
+    <h2 id="question"></h2>
+    <input id="answer" placeholder="Scrivi la risposta">
+    <br>
+    <button onclick="checkAnswer()">Conferma</button>
+
+    <!-- FEEDBACK -->
+    <p id="feedback"></p>
+
+    <br>
+    <button onclick="openModal()">🃏 Vedi le carte</button>
   </div>
 </div>
 
-<script>
-/* RISPOSTE */
-function check1() {
-  if (answer1.value.toLowerCase().trim() === "buio") {
-    step1.classList.add("hidden");
-    step2.classList.remove("hidden");
-  } else {
-    alert("Riprova 🎄");
-  }
-}
+<!-- MODALE -->
+<div id="modal" class="modal hidden">
+  <h2>🃏 Carte sbloccate</h2>
+  <div class="grid" id="cardsGrid"></div>
+  <br>
+  <button onclick="closeModal()">Chiudi</button>
+</div>
 
-function check2() {
-  if (answer2.value.toLowerCase().trim() === "eco") {
-    step2.classList.add("hidden");
-    step3.classList.remove("hidden");
-  } else {
-    alert("Quasi 😉");
-  }
-}
-
-function check3() {
-  if (answer3.value.toLowerCase().trim() === "buco") {
-    step3.classList.add("hidden");
-    finale.classList.remove("hidden");
-  } else {
-    alert("Ultimo sforzo 💪");
-  }
-}
-
-/* NEVE */
-for (let i = 0; i < 40; i++) {
-  let snow = document.createElement("div");
-  snow.className = "snowflake";
-  snow.innerHTML = "❄️";
-  snow.style.left = Math.random() * 100 + "vw";
-  snow.style.animationDuration = (5 + Math.random() * 5) + "s";
-  snow.style.fontSize = (12 + Math.random() * 18) + "px";
-  document.body.appendChild(snow);
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
