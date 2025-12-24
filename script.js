@@ -2,10 +2,10 @@ const riddles = [
   { question: "1) Cosa dobbiamo mettere su una fetta di pane?", answer: "olio", cardType: "evento", cardName: "Fulminacci" },
   { question: "2) La regione di Riace, Tropea e Cosenza?", answer: "calabria", cardType: "evento", cardName: "Brunori Sas" },
   { question: "3) Soprannome del più forte difensore (goleador) di Serie A?", answer: "specchio", cardType: "evento", cardName: "Turista" },
-  { question: "4) Per Flavio, abbiamo tutta la vita davanti a un?", answer: "bar", cardType: "azione", cardName: "Cambio 'evento - regalo'" },
+  { question: "4) Per Flavio, abbiamo tutta la vita davanti a un?", answer: "bar", cardType: "azione", cardName: "Cambio coppia" },
   { question: "5) Sei quel sassolino, nel cielo infinito, nella notte di?", answer: "natale", cardType: "evento", cardName: "Lucio Corsi" },
   { question: "6) Quante gare ha vinto Mads all'ultimo Giro d'Italia?", answer: "4", cardType: "evento", cardName: "Evento a piacere" },
-  { question: "7) Capitale della Repubblica Centrafricana?", answer: "bangui", cardType: "azione", cardName: "Chiedi sostituzione evento con altro a piacere (da scegliere insieme)" }
+  { question: "7) Capitale della Repubblica Centrafricana?", answer: "bangui", cardType: "azione", cardName: "Sostituzione evento (da scegliere insieme)" }
 ];
 
 let current = 0;
@@ -33,7 +33,7 @@ function loadQuestion() {
   if (current < riddles.length) {
     questionEl.innerText = riddles[current].question;
   } else {
-    questionEl.innerHTML = "🎉 Hai completato il gioco! <br>In camerina sulla mensola sopra il mio letto trovi un sacchetto con il set del gioco. <br>Utilizza il tabellone, disponi sulla prima riga SOLO le carte che hai vinto (colore arancio) e sulla seconda riga le mie carte verdi nell'ordine in cui le trovi, SENZA guardare. Le carte azione sono quelle arancio-celeste, utilizzabili alla fine. </br></br> Crea le coppie, associando le tue carte alle mie affidandoti alla fortuna. Le carte azione le puoi usare alla fine per eventuali modifiche. Al termine scrivi le coppie ottenute sotto i rispettivi numeri.  A ciascuna carta corrisponderà un regalo da sfruttare al dovuto momento nel 2026";
+    questionEl.innerHTML = "🎉 Hai completato il gioco! <br>In camerina sulla mensola sopra il mio letto trovi un sacchetto con il set del gioco. <br>Utilizza il tabellone, disponi sulla prima riga SOLO le carte che hai vinto (colore arancio) e sulla seconda riga le mie carte verdi nell'ordine in cui le trovi, SENZA guardare. Le carte azione sono quelle arancio-celeste, utilizzabili alla fine. </br></br> Crea le coppie, associando le tue carte alle mie affidandoti alla fortuna. Le carte azione le puoi usare alla fine per eventuali modifiche. Al termine scrivi le coppie ottenute sotto i rispettivi numeri.  A ciascuna carta corrisponderà un regalo da sfruttare al dovuto momento nel 2026 </br></br> La carta azione 'cambio coppia' ti permette di modificare il tabellone facendo un cambio delle tue carte. La carta azione 'sostituzione' ti permette di scegliere un evento da sostituire a quelli già proposti, oppure usalo come la carta cambio coppia.";
     answerEl.style.display = "none";
   }
 }
