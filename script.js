@@ -33,7 +33,7 @@ function loadQuestion() {
   if (current < riddles.length) {
     questionEl.innerText = riddles[current].question;
   } else {
-    questionEl.innerText = "🎉 Hai completato il gioco! <br>In camerina dentro l\'armadio, trovi un sacchetto con il set del gioco. Senza barare prendi SOLO le carte che hai vinto (colore rosso) e disponi senza guardare le mie carte nell'ordine in cui le trovi. Associa le carte 'evento' alle mie, le carte azioni le puoi usare alla fine per eventuali modifiche. Crea quindi le coppie e fai una foto, poi applica le carte azione. Al termine scrivi tutto nella tabella finale.";
+    questionEl.innerHTML = "🎉 Hai completato il gioco! <br>In camerina sulla mensola sopra il mio letto trovi un sacchetto con il set del gioco. Utilizza il tabellone, disponi sulla prima riga SOLO le carte che hai vinto (colore arancio) e sulla seconda riga le carte verdi nell'ordine in cui le trovi, SENZA guardare. Le carte azione sono quelle arancio-celeste, utilizzabili alla fine. </br></br> Crea le coppie, le carte azioni le puoi usare alla fine per eventuali modifiche. Al termine scrivi le coppie ottenute sotto i rispettivi numeri.";
     answerEl.style.display = "none";
   }
 }
