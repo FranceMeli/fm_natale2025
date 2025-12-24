@@ -33,7 +33,7 @@ function loadQuestion() {
   if (current < riddles.length) {
     questionEl.innerText = riddles[current].question;
   } else {
-    questionEl.innerHTML = "🎉 Hai completato il gioco! <br>In camerina sulla mensola sopra il mio letto trovi un sacchetto con il set del gioco. Utilizza il tabellone, disponi sulla prima riga SOLO le carte che hai vinto (colore arancio) e sulla seconda riga le carte verdi nell'ordine in cui le trovi, SENZA guardare. Le carte azione sono quelle arancio-celeste, utilizzabili alla fine. </br></br> Crea le coppie, le carte azioni le puoi usare alla fine per eventuali modifiche. Al termine scrivi le coppie ottenute sotto i rispettivi numeri.";
+    questionEl.innerHTML = "🎉 Hai completato il gioco! <br>In camerina sulla mensola sopra il mio letto trovi un sacchetto con il set del gioco. <br>Utilizza il tabellone, disponi sulla prima riga SOLO le carte che hai vinto (colore arancio) e sulla seconda riga le mie carte verdi nell'ordine in cui le trovi, SENZA guardare. Le carte azione sono quelle arancio-celeste, utilizzabili alla fine. </br></br> Crea le coppie, associando le tue carte alle mie affidandoti alla fortuna. Le carte azione le puoi usare alla fine per eventuali modifiche. Al termine scrivi le coppie ottenute sotto i rispettivi numeri.  A ciascuna carta corrisponderà un regalo da sfruttare al dovuto momento nel 2026";
     answerEl.style.display = "none";
   }
 }
